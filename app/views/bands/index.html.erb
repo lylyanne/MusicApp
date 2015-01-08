@@ -1,0 +1,17 @@
+<h1>You are in All Band's Page</h1>
+
+<ul>
+<% Band.all.each do |band| %>
+  <li><%= band.name %>
+      <% if current_user %>
+        <%= link_to "Edit band", edit_band_url(band) %>
+        <%= button_to "Delete band", band_url(band), method: :delete %>
+      <% end %>
+  </li>
+<% end %>
+</ul>
+
+<br>
+<% if current_user %>
+  <%= link_to "Create new band", new_band_url %>
+<% end %>

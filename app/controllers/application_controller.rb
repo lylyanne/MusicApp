@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     redirect_to user_url(current_user) unless current_user.nil?
   end
 
+  def require_login_user!
+    redirect_to new_session_url if current_user.nil?
+  end
+
   def current_user
     return nil if session[:session_token].nil?
     User.find_by(session_token: session[:session_token])

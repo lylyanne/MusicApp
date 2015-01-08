@@ -10,6 +10,7 @@
 
 <% if current_user.nil? %>
   <%= link_to "Login", new_session_url %>
+  <%= link_to "Create new user", new_user_url %>
 <% else %>
   <%= current_user.email %>
   <%= button_to "Logout", session_url, method: :delete %>
