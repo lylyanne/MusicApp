@@ -1,0 +1,16 @@
+<h1>Track's page for <%= @track.song_title %></h1>
+
+<ul>
+  <% @track.attributes.each do |key, value| %>
+  <% if key == 'lyric' %>
+    <li><strong><%= key %>: </strong><%= ugly_lyric(value) %>
+  <% else %>
+    <li><strong><%= key %>: </strong><%= value %></li>
+  <% end %>
+  <% end %>
+</ul>
+
+<%= link_to "Edit track", edit_track_url(@track) %>
+<%= link_to "Delete track", track_url(@track), method: :delete %>
+<br>
+<%= link_to "Go back to album's page", album_url(@track.album_id) %>

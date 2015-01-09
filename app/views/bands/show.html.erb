@@ -1,1 +1,26 @@
-<h1>Band page</h1>
+<h1>Band page for <%= @band.name %></h1>
+
+<h3>Band info:</h3>
+<ul>
+  <% @band.attributes.each do |key, value| %>
+  <li><strong><%= key %>: </strong><%= value %></li>
+  <% end %>
+</ul>
+
+<br><br>
+<% if !@band.albums.empty?  %>
+<h3>They have the following albums:</h3>
+<ul>
+  <% @band.albums.each do |album| %>
+  <li><%= album.name %>
+    <%= link_to "View album", album_url(album) %>
+    <%= link_to "Edit album", edit_album_url(album) %>
+    <%= link_to "Delete album", album_url(album), method: :delete %>
+  </li>
+  <% end %>
+</ul>
+<% end %>
+
+<br>
+<%= link_to "Go back to all bands", bands_url %> ||
+<%= link_to "Create new album", new_band_album_url(@band) %>
